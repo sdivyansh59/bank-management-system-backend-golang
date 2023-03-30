@@ -26,7 +26,14 @@ tasks:
     cmds:
       - migrate -path db/migration -database "postgresql://root:secret@localhost:5435/simple_bank?sslmode=disable" -verbose down
   
-  check:
-    desc: "try cmd"
-    cmds:
-      - echo "Divyansh Singh"
+  sqlc:
+    desc: "sqlc golang "
+    cmds: 
+      - sqlc generate
+
+  sqlcdocker:
+    desc: "run sqlc using dockerfirst run: docker pull kjconroy/sqlc then this cmd"
+    cmds: 
+      - docker run --rm -v "%cd%:/src" -w /src kjconroy/sqlc generate    
+
+  .PHONY: postgres createdb dropdb migratedb migratedown  
