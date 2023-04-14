@@ -36,4 +36,8 @@ tasks:
     cmds: 
       - docker run --rm -v "%cd%:/src" -w /src kjconroy/sqlc generate    
 
+  test:
+    cmds:
+      - go test -v -cover ./...
+      
   .PHONY: postgres createdb dropdb migratedb migratedown  
